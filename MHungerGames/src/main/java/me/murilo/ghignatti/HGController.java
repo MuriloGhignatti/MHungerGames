@@ -52,6 +52,9 @@ public class HGController {
         if(!dataFolder.exists())
             dataFolder.mkdir();
         File configFile = new File(new StringBuilder(dataFolderPath).append("/").append("config.json").toString());
+        File kitsFolder = new File(new StringBuilder(dataFolderPath).append("/").append("kits").toString());
+        if(!kitsFolder.exists())
+            kitsFolder.mkdir();
         if(configFile.exists())
             try {
                 HGController result = new ObjectMapper().readValue(configFile, HGController.class);
