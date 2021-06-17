@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import me.murilo.ghignatti.enums.GameState;
 
-public class HungerGamesController {
+public class HGController {
     
     private static HashMap<String, Integer> tasks = new HashMap<>();
 
