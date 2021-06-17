@@ -1,0 +1,6 @@
+main: me.murilo.ghignatti.MHungerGames
+name: MHungerGames
+version: 1.0.0
+load: STARTUP
+author: Murilo Henrique Ghignatti
+website: https://github.com/MuriloGhignatti?tab=repositories
