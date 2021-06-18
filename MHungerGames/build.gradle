@@ -41,7 +41,7 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.12.3'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.12.3'
 
-    implementation 'com.github.MuriloGhignatti:MHungerGamesAPI:-SNAPSHOT'
+    implementation 'com.github.MuriloGhignatti:MHungerGamesAPI:bd364ca9f9'
 
     // Spigot API
     compileOnly 'org.spigotmc:spigot-api:1.17-R0.1-SNAPSHOT'
