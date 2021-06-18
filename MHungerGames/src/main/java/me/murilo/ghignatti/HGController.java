@@ -205,8 +205,10 @@ public class HGController {
                                     Object currentKitInstance = null;
                                     for(String s: currentModuleKitsPaths.kitsPaths){
                                         currentKitInstance = Class.forName(s, true, new URLClassLoader(new URL[]{new File(new StringBuilder(this.mainInstance.getDataFolder().getCanonicalPath().toString()).append("/").append("kits").toString(), fileName).toURL()}, getClass().getClassLoader())).getDeclaredConstructor().newInstance();
+                                        ((Kit)currentKitInstance).generateConfig();
                                         this.kits.put(((Kit) currentKitInstance).getKitName(), (Kit) currentKitInstance);
                                     }
+                                    in.close();
                                 }
                             }
                         } catch (IOException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
