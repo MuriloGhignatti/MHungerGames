@@ -96,7 +96,7 @@ public class PreBattle implements Listener{
     @EventHandler
     public void onChestOpen(PlayerInteractEvent event){
         GameState currentGameState = mainInstance.getHgController().getCurrentGameState();
-        if(currentGameState != GameState.BATTLE || currentGameState != GameState.FINAL_COMBAT && (event.getClickedBlock().getType().equals(Material.CHEST) || event.getClickedBlock().getType().equals(Material.FURNACE) || event.getClickedBlock().getType().equals(Material.ENDER_CHEST) || event.getClickedBlock().getType().equals(Material.SHULKER_BOX))){
+        if(currentGameState != GameState.BATTLE || currentGameState != GameState.FINAL_COMBAT && (event.getClickedBlock().getType().equals(Material.CHEST) || event.getClickedBlock().getType().equals(Material.FURNACE) || event.getClickedBlock().getType().equals(Material.ENDER_CHEST))){
             event.setCancelled(true);
         }
     }

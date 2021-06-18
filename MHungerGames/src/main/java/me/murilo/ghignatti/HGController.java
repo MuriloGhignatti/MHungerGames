@@ -202,11 +202,13 @@ public class HGController {
                                 if(currentFile.equals("module.json")){
                                     InputStream in = new ZipFile(new StringBuilder(kitsPath.getCanonicalPath().toString()).append("/").append(fileName).toString()).getInputStream(entry);
                                     KitsPath currentModuleKitsPaths = new ObjectMapper().readValue(in, KitsPath.class);
-                                    Object currentKitInstance = null;
+                                    Kit currentKitInstance = null;
                                     for(String s: currentModuleKitsPaths.kitsPaths){
-                                        currentKitInstance = Class.forName(s, true, new URLClassLoader(new URL[]{new File(new StringBuilder(this.mainInstance.getDataFolder().getCanonicalPath().toString()).append("/").append("kits").toString(), fileName).toURL()}, getClass().getClassLoader())).getDeclaredConstructor().newInstance();
-                                        ((Kit)currentKitInstance).generateConfig();
-                                        this.kits.put(((Kit) currentKitInstance).getKitName(), (Kit) currentKitInstance);
+                                        currentKitInstance = (Kit) Class.forName(s, true, new URLClassLoader(new URL[]{new File(new StringBuilder(this.mainInstance.getDataFolder().getCanonicalPath().toString()).append("/").append("kits").toString(), fileName).toURL()}, getClass().getClassLoader())).getDeclaredConstructor().newInstance();
+                                        if(!this.kits.containsKey(currentKitInstance.getKitName())){
+                                            registerPluginEvents(currentKitInstance);
+                                            this.kits.put(currentKitInstance.getKitName(), currentKitInstance);
+                                        }
                                     }
                                     in.close();
                                 }
@@ -219,14 +221,11 @@ public class HGController {
                 }
             }
         }
-        registerPluginEvents();
     }
 
-    private void registerPluginEvents(){
-        for(Kit kit: kits.values()){
-            this.mainInstance.getServer().getPluginManager().registerEvents(kit, this.mainInstance);
-            Bukkit.getConsoleSender().sendMessage(new StringBuilder("Registering kit: ").append(kit.getKitName()).toString());
-        }
+    private void registerPluginEvents(Kit kit){
+        this.mainInstance.getServer().getPluginManager().registerEvents(kit, this.mainInstance);
+        Bukkit.getConsoleSender().sendMessage(new StringBuilder("Registering kit: ").append(kit.getKitName()).toString());
     }
 
     public boolean giveKit(Player player, String kitName){
