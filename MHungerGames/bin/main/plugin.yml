@@ -4,3 +4,7 @@ version: 1.0.0
 load: STARTUP
 author: Murilo Henrique Ghignatti
 website: https://github.com/MuriloGhignatti?tab=repositories
+commands:
+  kit:
+    description: Select your kit
+    usage: /kit {kitName}

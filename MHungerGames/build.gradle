@@ -27,6 +27,7 @@ repositories {
     }
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -39,6 +40,8 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.3'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.12.3'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.12.3'
+
+    implementation 'com.github.MuriloGhignatti:MHungerGamesAPI:5f6356dc3e'
 
     // Spigot API
     compileOnly 'org.spigotmc:spigot-api:1.17-R0.1-SNAPSHOT'
